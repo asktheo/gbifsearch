@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  MAP_PROJECTION : 'EPSG:3857',
+  MAP_CENTER_LONLAT : [12.4184,55.9740]
 };

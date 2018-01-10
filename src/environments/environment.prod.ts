@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  MAP_PROJECTION : 'EPSG:3857',
+  MAP_CENTER_LONLAT : [11.364, 56.204]  
 };
