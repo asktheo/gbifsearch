@@ -30,7 +30,7 @@ export class SearchmapComponent implements OnInit {
       view: new ol.View({
           projection: environment.MAP_PROJECTION,
           center: ol.proj.transform(environment.MAP_CENTER_LONLAT, 'EPSG:4326', environment.MAP_PROJECTION),
-          zoom: 11
+          zoom: environment.ZOOM_DEFAULT
       })
   });    
   }

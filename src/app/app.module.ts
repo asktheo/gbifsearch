@@ -6,20 +6,23 @@ import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { SearchformComponent } from './searchform/searchform.component';
 import { SearchmapComponent } from './searchmap/searchmap.component';
+import { OccurenceService} from './occurence.service';
+import { OccurenceResultComponent } from './occurence-result/occurence-result.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchformComponent,
-    SearchmapComponent
+    SearchmapComponent,
+    OccurenceResultComponent
   ],
   imports: [
     BrowserModule, 
     HttpModule, 
     AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [OccurenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
