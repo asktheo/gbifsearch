@@ -1,3 +1,6 @@
-<p>
-  occurence-result works!
-</p>
+<table>
+  <tr *ngFor="let occurence of occurences">
+      <td>{{occurence.eventDate}}</td>
+      <td>{{occurence.individualCount}}</td>
+  </tr>
+</table>

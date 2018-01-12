@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
 import { SearchformComponent } from './searchform/searchform.component';
@@ -19,10 +19,11 @@ import { OccurenceResultComponent } from './occurence-result/occurence-result.co
   ],
   imports: [
     BrowserModule, 
-    HttpModule, 
+    HttpModule,
+    HttpClientModule, 
     AlertModule.forRoot()
   ],
-  providers: [OccurenceService],
+  providers: [HttpClientModule, OccurenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

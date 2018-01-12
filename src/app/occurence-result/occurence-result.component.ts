@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Occurence } from '../occurence';
+import { OccurenceResult } from '../occurence-result';
 import { OccurenceService} from '../occurence.service';
+import { Occurence } from '../occurence';
 
 @Component({
   selector: 'app-occurence-result',
@@ -8,18 +9,23 @@ import { OccurenceService} from '../occurence.service';
   styleUrls: ['./occurence-result.component.css']
 })
 export class OccurenceResultComponent implements OnInit {
-  private results:Occurence[];
+  result:OccurenceResult;
+  occurences: Occurence[];
 
   constructor(private occurenceService:OccurenceService) { 
     this.occurenceService = occurenceService;
+    this.occurences 
   }
 
   ngOnInit() {
+    this.getOccurences();
   }
 
-  getOccurences(params:string[]) {
-    
-    
+  getOccurences() {
+    this.occurenceService.search().subscribe((data)=> {
+      this.result= data;
+      this.occurences = this.result.results;
+    });
   }
 
 }
