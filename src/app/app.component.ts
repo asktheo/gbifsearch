@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Search a GBIF dataset';
+  searching : boolean = false;
+
+  search(event : any){
+    this.searching = true;
+    console.log("searching:", this.searching);
+  }
+
+  endSearch(event : any){
+    this.searching = false;
+    console.log("searching:", this.searching);
+  }
 }
+
+

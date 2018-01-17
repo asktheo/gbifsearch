@@ -1,7 +1,24 @@
+<form id="gbifform" class="form-inline" action="">
 <div class="col-sm-6">
-    <!-- <form id="gbifform" class="form">
-      <div class="form-control">some input field</div>
-    </form> -->
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste labore inventore dignissimos, voluptas dolores rem provident expedita ipsam fugiat quae omnis placeat quaerat distinctio perspiciatis eveniet consequuntur adipisci est nam!
+  <div class="input-group">
+    <label class="form-control" for="dataset_key">Dataset key</label>
+    <input class="form-control" name="dataset_key" type="text" [(ngModel)]="searchOccurrence.dataset_key" placeholder="dataset_key"
+    />
+  </div>
+  <div class="input-group">
+    <label class="form-control" for="taxon_key">Taxon key</label>
+    <input class="form-control" name="taxon_key" type="text" [(ngModel)]="searchOccurrence.taxon_key" placeholder="taxon_key"
+    />
+  </div>
+  <div class="input-group">
+    <label class="form-control" for="recordedBy">Recorded by</label>
+    <input class="form-control" name="recordedBy" type="text" [(ngModel)]="searchOccurrence.recordedBy" placeholder="recordedBy"
+    />
+  </div>
 </div>
-   
+<app-searchmap (setWkt)="setWkt($event)"></app-searchmap>
+<div>{{wkt}}</div>
+<div>
+    <input type="button" (click)="search()" value="Search" ng-disabled="searching" />
+</div>
+</form>

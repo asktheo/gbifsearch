@@ -1,12 +1,11 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <alert type="success">Welcome to {{ title }}!</alert>
+    <alert type="success">{{ title }}!</alert>
   </div>
   <div class="row-fluid">
-    <app-searchform></app-searchform>
-    <app-searchmap></app-searchmap>
+      <app-searchform (notifyParent)="search($event)" [searching]="searching"></app-searchform> 
   </div>
   <div class="row-fluid">
-    <app-occurence-result></app-occurence-result>
-  </div> 
+    <app-occurence-result (notifyParent)="endSearch($event)" [searching]="searching"></app-occurence-result>
+  </div>
 </div>

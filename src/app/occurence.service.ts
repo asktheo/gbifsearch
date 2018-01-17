@@ -10,18 +10,20 @@ const httpOptions = {
 @Injectable()
 export class OccurenceService {
   private baseUrl : string;
+  private searchParams : HttpParams;
 
   constructor(private http : HttpClient) { 
     this.baseUrl = 'http://api.gbif.org/v1/occurrence';
+    this.searchParams = new HttpParams();
   }
-      
-  search() : Observable<OccurenceResult> {
-    const params = new HttpParams()
-    .set("dataset_key","95db4db8-f762-11e1-a439-00145eb45e9a")
-    .set("taxon_key", "2495000")
-    .set("recordedBy", "Theo Askov");
 
+  search() : Observable<OccurenceResult> {
+    var params : HttpParams = this.searchParams;
     return this.http.get<OccurenceResult>(`${this.baseUrl}/search`,{params});
   }  
+
+  setParam(key : string,value : string){
+    this.searchParams=this.searchParams.set(key, value);   
+  }
 
 }

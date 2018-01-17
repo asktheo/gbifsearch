@@ -66,3 +66,13 @@ export interface Occurence {
 export interface Example {
     occurence: Occurence;
 }
+
+export interface SearchOccurence {
+    dataset_key?: string;
+    recordedBy?: string;
+    taxon_key?: number;
+    year?: number;
+    month?: number;
+    day?: number;
+    geometry?: string;    
+}

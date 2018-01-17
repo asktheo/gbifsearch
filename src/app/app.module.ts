@@ -4,6 +4,7 @@ import { HttpModule} from '@angular/http';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AlertModule } from 'ngx-bootstrap';
+import { FormsModule } from '@angular/forms';
 import { SearchformComponent } from './searchform/searchform.component';
 import { SearchmapComponent } from './searchmap/searchmap.component';
 import { OccurenceService} from './occurence.service';
@@ -21,6 +22,7 @@ import { OccurenceResultComponent } from './occurence-result/occurence-result.co
     BrowserModule, 
     HttpModule,
     HttpClientModule, 
+    FormsModule,
     AlertModule.forRoot()
   ],
   providers: [HttpClientModule, OccurenceService],
