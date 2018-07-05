@@ -2,8 +2,6 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import * as ol from 'openlayers';
 import { environment } from '../../environments/environment';
 import { OccurenceService} from '../occurence.service';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { setTimeout } from 'timers';
 
 @Component({
   selector: 'app-searchmap',
