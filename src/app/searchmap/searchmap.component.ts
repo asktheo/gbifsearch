@@ -1,5 +1,17 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import * as ol from 'openlayers';
+import Map from 'ol/Map';
+import Vector from 'ol/layer/Vector';
+import WKT from 'ol/format/WKT';
+import Draw from 'ol/interaction/Draw';
+import Modify from 'ol/interaction/Modify';
+import Tile from 'ol/layer/Tile';
+import View from 'ol/View';
+import Feature from 'ol/Feature';
+import GeometryType from 'ol/geom/GeometryType';
+import * as epsg3857 from 'ol/proj/epsg3857';
+import * as olsource from 'ol/source';
+import * as olstyle from 'ol/style';
+
 import { environment } from '../../environments/environment';
 import { OccurenceService} from '../occurence.service';
 
@@ -10,59 +22,57 @@ import { OccurenceService} from '../occurence.service';
 })
 export class SearchmapComponent implements OnInit{
   @Output() setWkt: EventEmitter<string> = new EventEmitter();
-  private map : any;
-  private layers : ol.layer.layers;
-  private vector : ol.layer.Vector;
-  private source : ol.source.Vector;
-  private modify : ol.interaction.Modify;
-  private draw : ol.interaction.Draw;
-  private type : string = 'Polygon';
-  private wktFormat : ol.format.WKT;
+  private map : Map;
+  private layers : any;
+  private vector : Vector;
+  private source : olsource.Vector;
+  private modify : Modify;
+  private draw : Draw;
+  private type : GeometryType = GeometryType.Polygon;
+  private wktFormat : WKT;
 
   constructor(private occurenceService:OccurenceService) { 
     this.occurenceService = occurenceService;
-    this.wktFormat = new ol.format.WKT();
-    this.source = new ol.source.Vector();
-    this.vector = new ol.layer.Vector({
+    this.wktFormat = new WKT();
+    this.source = new olsource.Vector();
+    this.vector = new Vector({
       source: this.source,
-      style: new ol.style.Style({
-        fill: new ol.style.Fill({
+      style: new olstyle.Style({
+        fill: new olstyle.Fill({
           color: 'rgba(255, 255, 255, 0.2)'
         }),
-        stroke: new ol.style.Stroke({
+        stroke: new olstyle.Stroke({
           color: '#ffcc33',
           width: 2
         }),
-        image: new ol.style.Circle({
+        image: new olstyle.Circle({
           radius: 7,
-          fill: new ol.style.Fill({
+          fill: new olstyle.Fill({
             color: '#ffcc33'
           })
         })
       })
     });
   
-    this.layers = [new ol.layer.Tile({
-      title: "OSM",
-      name: "Open Street Map",
-      source: new ol.source.OSM(),
+    this.layers = [new Tile({
+      source: new olsource.OSM(),
       visible: true
     }),
     this.vector];      
   } //constructor
 
   addInteractions() {
-    this.modify = new ol.interaction.Modify({source: this.source});
-    this.draw = new ol.interaction.Draw({
+    this.modify = new Modify({source: this.source});
+    this.draw = new Draw({
       type: this.type
     });
     this.map.addInteraction(this.draw);
     this.map.addInteraction(this.modify); 
 
-    this.draw.on('drawend', function(evt){   
+    this.draw.on('drawend', function(evt : any){  
       var geom = evt.feature.getGeometry().transform('EPSG:3857','EPSG:4326');
-      var feature = new ol.Feature({
-        geometry: geom
+      var feature = new Feature({
+        geometry: geom.getGeometry()
       });
       var wkt = this.wktFormat.writeFeature(feature);
       this.setWkt.emit(wkt);
@@ -71,15 +81,15 @@ export class SearchmapComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.map = new ol.Map({
+    this.map = new Map({
       target: 'mapdiv',
       layers: this.layers,
-      controls: ol.control.defaults().extend([
-          new ol.control.ScaleLine()
-      ]),
-      view: new ol.View({
+      // controls: control.defaults().extend([
+      //     new control.ScaleLine()
+      // ]),
+      view: new View({
           projection: environment.MAP_PROJECTION,
-          center: ol.proj.transform(environment.MAP_CENTER_LONLAT, 'EPSG:4326', environment.MAP_PROJECTION),
+          center: epsg3857.fromEPSG4326(environment.MAP_CENTER_LONLAT),
           zoom: environment.ZOOM_DEFAULT
       })
     });
