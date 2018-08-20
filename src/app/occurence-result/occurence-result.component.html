@@ -1,6 +1,16 @@
-<table>
-  <tr *ngFor="let occurence of occurrences">
-      <td>{{occurence.eventDate}}</td>
-      <td>{{occurence.individualCount}}</td>
+<alert type="success" *ngIf="occurrences">{{occurrences.length}} observations found!</alert>
+<table id="occurenceresult" class="table" style="width:100%" *ngIf="occurrences">
+<thead>
+  <tr>
+      <th>Date</th>
+      <th>Count</th>
   </tr>
+</thead>
+  <tbody>
+      <tr *ngFor="let occurence of occurrences">
+          <td>{{occurence.eventDate | date }}</td>
+          <td>{{occurence.individualCount}}</td>
+      </tr>
+  </tbody>
+
 </table>

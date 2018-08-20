@@ -1,9 +1,12 @@
 <div class="container">
-  <div class="row">
-    <div class="alert" type="success">{{ title }}!</div>
+  <div class="row text-center">
+    <div class="col">
+      <div id="title" class="lead"><label>{{title}}</label></div>
+    </div>
   </div>
   <div class="row">
     <div class="col">
+
       <app-searchform (notifyParent)="search($event)" [searching]="searching"></app-searchform>
     </div>
     <div class="col">
