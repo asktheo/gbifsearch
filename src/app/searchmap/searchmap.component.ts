@@ -65,16 +65,16 @@ export class SearchmapComponent implements OnInit{
   } //constructor
 
   addInteractions() {
-    this.modify = new Modify({source: this.vectorSource});
+   // this.modify = new Modify({source: this.vectorSource});
     this.draw = new Draw({
       source: this.vectorSource,
       type: this.selectType
     });
     this.map.addInteraction(this.draw);
-    this.map.addInteraction(this.modify); 
+    //this.map.addInteraction(this.modify); 
     var that = this;
     this.draw.on('drawend', function(evt : any){
-      evt.preventDefault();
+      //evt.preventDefault();
       var geom = evt.feature.getGeometry().transform('EPSG:3857','EPSG:4326');
       var feature = new Feature({
          geometry: geom
