@@ -13,6 +13,7 @@ import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
 export class OccurenceResultComponent implements OnInit, OnChanges {
   @Input() searching: boolean;
   @Output() notifyParent: EventEmitter<boolean> = new EventEmitter();
+  @Output() emitPosition: EventEmitter<String> = new EventEmitter();
   result:OccurenceResult;
   occurrences: Occurence[];
 
@@ -33,6 +34,10 @@ export class OccurenceResultComponent implements OnInit, OnChanges {
         this.notifyParent.emit(this.searching);
       });
     }
+  }
+
+  setPosition(occurence : Occurence){
+    this.emitPosition.emit(occurence.decimalLongitude+","+occurence.decimalLatitude);
   }
 
 }

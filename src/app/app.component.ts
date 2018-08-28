@@ -8,6 +8,7 @@ import { Component, Output } from '@angular/core';
 export class AppComponent {
   title = 'Search a GBIF dataset';
   searching : boolean = false;
+  obsPosition : String = "";
 
   search(event : any){
     this.searching = true;
@@ -17,6 +18,10 @@ export class AppComponent {
   endSearch(event : any){
     this.searching = false;
     console.log("searching:", this.searching);
+  }
+
+  setPosition(event : String){
+    this.obsPosition = event;
   }
 }
 

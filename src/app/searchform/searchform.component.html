@@ -6,7 +6,7 @@
   </div>
   <div class="input-group fullwidth">
     <label class="form-control" for="taxon_key">Taxon key</label>
-    <input class="form-control" name="taxon_key" type="text" [(ngModel)]="searchOccurrence.taxon_key" placeholder="taxon_key"
+    <input class="form-control" name="taxon_key" type="input" [(ngModel)]="searchOccurrence.taxon_key" placeholder="taxon_key"
     />
   </div>
   <div class="input-group fullwidth">
@@ -14,9 +14,13 @@
     <input class="form-control" name="recordedBy" type="text" [(ngModel)]="searchOccurrence.recordedBy" placeholder="recordedBy"
     />
   </div>
-</form>
-<app-searchmap (setWkt)="setWkt($event)"></app-searchmap>
-<!-- <div>{{wkt}}</div> -->
-<div>
+  <div class="input-group text-right">
     <button class="btn btn-md btn-default" (click)="search()" ng-disabled="searching">Search</button>
+  </div>  
+</form>
+<div>
+
 </div>
+<app-searchmap (wktEmitter)="setWkt($event)" [obsPosition]="obsPosition"></app-searchmap>
+<div>{{obsPosition}}</div>
+

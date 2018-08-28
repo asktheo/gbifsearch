@@ -6,11 +6,10 @@
   </div>
   <div class="row">
     <div class="col">
-
-      <app-searchform (notifyParent)="search($event)" [searching]="searching"></app-searchform>
+      <app-searchform (notifyParent)="search($event)" [searching]="searching" [obsPosition]="obsPosition"></app-searchform>
     </div>
     <div class="col">
-      <app-occurence-result (notifyParent)="endSearch($event)" [searching]="searching"></app-occurence-result>
+      <app-occurence-result (notifyParent)="endSearch($event)" (emitPosition)="setPosition($event)" [searching]="searching"></app-occurence-result>
     </div>
   </div>
 </div>

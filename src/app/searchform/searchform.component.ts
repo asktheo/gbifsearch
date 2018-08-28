@@ -10,8 +10,10 @@ import { SearchOccurence} from '../occurence';
 export class SearchformComponent implements OnInit {
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
   @Input() searching: boolean;
+  @Input() obsPosition: String;
   searchOccurrence : SearchOccurence;
   wkt : string = '';
+
 
   constructor(private occurenceService:OccurenceService) {
     this.searchOccurrence = {}; 
@@ -28,7 +30,6 @@ export class SearchformComponent implements OnInit {
 
   setWkt(wkt : string){
     this.wkt = wkt;
-    console.log(wkt);
   }
 
   search() {
