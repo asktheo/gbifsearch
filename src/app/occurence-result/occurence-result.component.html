@@ -13,7 +13,7 @@
         <tbody>
             <tr *ngFor="let occurence of occurrences" >
                 <td>{{occurence.eventDate | date }}</td>
-                <td (click)="setPosition(occurence)">{{occurence.locality }}</td>
+                <td class="highLight" (click)="setPosition(occurence)">{{occurence.locality }}</td>
                 <td>{{occurence.vernacularName }}</td>
                 <td>{{occurence.individualCount}}</td>
             </tr>
