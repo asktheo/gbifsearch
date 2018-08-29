@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { OccurenceResult } from './occurence-result';
 
 const httpOptions = {
@@ -18,8 +18,7 @@ export class OccurenceService {
   }
 
   search() : Observable<OccurenceResult> {
-    var params : HttpParams = this.searchParams;
-    return this.http.get<OccurenceResult>(`${this.baseUrl}/search`,{params});
+    return this.http.get<OccurenceResult>(`${this.baseUrl}/search`,{headers: httpOptions.headers, params: this.searchParams});
   }  
 
   setParam(key : string,value : string){
