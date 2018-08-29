@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { OccurenceResult } from './occurence-result';
+import { OccurenceResult } from '../occurence-result/occurence-result';
 import { OccurenceService} from '../occurence/occurence.service';
 import { Occurence } from '../occurence/occurence';
 import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';

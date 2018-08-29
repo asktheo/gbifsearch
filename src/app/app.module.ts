@@ -7,7 +7,7 @@ import { AlertModule } from 'ngx-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SearchformComponent } from './searchform/searchform.component';
 import { SearchmapComponent } from './searchmap/searchmap.component';
-import { OccurenceService} from './occurence.service';
+import { OccurenceService} from './occurence/occurence.service';
 import { OccurenceResultComponent } from './occurence-result/occurence-result.component';
 
 

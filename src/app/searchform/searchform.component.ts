@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { OccurenceService } from '../occurence.service';
-import { SearchOccurence} from '../occurence';
+import { OccurenceService } from '../occurence/occurence.service';
+import { SearchOccurence} from '../occurence/occurence';
 
 @Component({
   selector: 'app-searchform',

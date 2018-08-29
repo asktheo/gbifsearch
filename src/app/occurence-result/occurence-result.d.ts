@@ -1,4 +1,4 @@
-import { Occurence } from "./occurence";
+import { Occurence } from "../occurence/occurence";
 
 export interface OccurenceResult {
     offset: number,
