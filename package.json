@@ -36,7 +36,7 @@
     "popper.js": "^1.14.4",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
-    "serve": "^6.5.8",
+    "serve": "^7.0.0",
     "webpack": "^4.17.1",
     "webpack-dev-server": "^3.1.6",
     "zone.js": "^0.8.26"
