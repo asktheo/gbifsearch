@@ -9,7 +9,9 @@
     "prod": "ng build -c production",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -39,7 +41,8 @@
     "serve": "^6.5.8",
     "webpack": "^4.17.1",
     "webpack-dev-server": "^3.1.6",
-    "zone.js": "^0.8.26"
+    "zone.js": "^0.8.26",
+    "snyk": "^1.258.2"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^6.1.4",
@@ -59,5 +62,6 @@
     "ts-node": "~3.0.4",
     "tslint": "~5.3.2",
     "typescript": "~2.9.2"
-  }
+  },
+  "snyk": true
 }
