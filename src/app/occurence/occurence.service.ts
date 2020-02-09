@@ -13,7 +13,7 @@ export class OccurenceService {
   private searchParams : HttpParams;
 
   constructor(private http : HttpClient) { 
-    this.baseUrl = 'http://api.gbif.org/v1/occurrence';
+    this.baseUrl = '//api.gbif.org/v1/occurrence';
     this.searchParams = new HttpParams();
   }
 
