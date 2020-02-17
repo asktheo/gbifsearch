@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { OccurenceService } from '../occurence/occurence.service';
 import { SearchOccurence} from '../occurence/occurence';
 
@@ -7,8 +7,9 @@ import { SearchOccurence} from '../occurence/occurence';
   templateUrl: './searchform.component.html',
   styleUrls: ['./searchform.component.css']
 })
-export class SearchformComponent implements OnInit {
+export class SearchformComponent implements OnInit, OnChanges {
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+  @Input() speciesKey: number;
   @Input() searching: boolean;
   @Input() obsPosition: String;
   searchOccurrence : SearchOccurence;
@@ -25,6 +26,12 @@ export class SearchformComponent implements OnInit {
       dataset_key : "95db4db8-f762-11e1-a439-00145eb45e9a",
       taxon_key : 2495000,
       recordedBy : "Theo Askov"
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes.speciesKey){
+      this.searchOccurrence.taxon_key = this.speciesKey
     }
   }
 

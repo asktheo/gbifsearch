@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'Search a GBIF dataset';
   searching : boolean = false;
   obsPosition : String = "";
+  taxonKey : number;
 
   search(event : any){
     this.searching = true;
@@ -23,6 +24,9 @@ export class AppComponent {
   setPosition(event : String){
     this.obsPosition = event;
   }
-}
 
+  setTaxonKey(event : number){
+    this.taxonKey = event;
+  }
+}
 

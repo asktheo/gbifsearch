@@ -9,6 +9,7 @@ import { SearchformComponent } from './searchform/searchform.component';
 import { SearchmapComponent } from './searchmap/searchmap.component';
 import { OccurenceService} from './occurence/occurence.service';
 import { OccurenceResultComponent } from './occurence-result/occurence-result.component';
+import { SpeciesListComponent } from './species-list/species-list.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { OccurenceResultComponent } from './occurence-result/occurence-result.co
     AppComponent,
     SearchformComponent,
     SearchmapComponent,
-    OccurenceResultComponent
+    OccurenceResultComponent,
+    SpeciesListComponent
   ],
   imports: [
     BrowserModule, 

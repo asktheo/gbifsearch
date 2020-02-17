@@ -1,0 +1,30 @@
+<ul>
+  <li *ngFor="let k of speciesListAsTree" (click)="selectKingdom(k.kingdomKey)">
+    {{k.kingdom}}
+    <ul *ngIf="kingdom && kingdom.kingdomKey === k.kingdomKey">
+      <li *ngFor="let c of kingdom.classes" (click)="selectClass(c.classKey)">
+        {{c.class}}
+        <ul *ngIf="speciesClass && speciesClass.classKey === c.classKey">
+          <li *ngFor="let o of speciesClass.orders" (click)="selectOrder(o.orderKey)">
+            {{o.order}}
+            <ul *ngIf="order && order.orderKey === o.orderKey">
+              <li *ngFor="let fam of order.families" (click)="selectFamily(fam.familyKey)">
+                {{fam.family}}
+                <ul *ngIf="family && family.familyKey === fam.familyKey">
+                  <li *ngFor="let gen of family.geni" (click)="selectGenus(gen.genusKey)">
+                    {{gen.genus}}
+                    <ul *ngIf="genus && genus.genusKey === gen.genusKey">
+                      <li *ngFor="let spec of genus.speciesList" (click)="selectSpecies(spec.taxonKey)">
+                        {{spec.scientificName}}
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
