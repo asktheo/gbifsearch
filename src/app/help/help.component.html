@@ -1,0 +1,28 @@
+<div class="text-right" *ngIf="!active">
+  <button class="btn btn-sm btn-info" (click)="open()">Need help?</button>
+</div>
+<div class="jumbotron" *ngIf="active" style="position:absolute;width:80%;top:25px;right:10%;z-index:1200">
+  <div class="text-right"><button class="close" (click)="close()">X</button>
+  </div>
+  <div class="w-100">
+    <h3>Help for searching occurrences</h3>
+    <div class="text-left">The form supports setting the following parameters (none required):
+    <ol>
+      <li>Selecting a species (bird, mammal, insect ..)</li>
+      <li class="list-group-item">Traverse the taxonomic tree to the left to find it (for now you need to know the latin (scientific) name!)<br>
+        Click the header labels till you see a list of species<br>
+        <label class="badge badge-primary badge-pill">54321</label> shows the total number of occurrences in DOFbasen</li>
+      <li>Selecting an observer (source and reporter of occurence)</li>
+      <li class="list-group-item">Type an observer's full name (from DOFbasen) in the input text field to the right</li>
+      <li>Narrowing the area using the map</li>
+      <li class="list-group-item">Draw a polygon by clicking the map - finish by double-clicking. <br> You don't have to finish where you started</li>
+    </ol>
+    </div>
+    <div class="text-left">Launching search and more:
+    <ul class="list-group">
+      <li class="list-group-item">Click the search button. Results will show in list. Maximum number of occurences in result is 300</li>
+      <li class="list-group-item">The occurence list contains the species name the site name and the number of specimens occuring in the record<br>Click the site name and the map will zoom and pan to the site.<br>For now the species names show in Danish. </li>
+    </ul>
+    </div>
+  </div>
+</div>
