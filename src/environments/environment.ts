@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   MAP_PROJECTION : 'EPSG:3857',
-  MAP_CENTER_LONLAT : [12.4184,55.9740],
-  ZOOM_DEFAULT : 11
+  MAP_CENTER_LONLAT : [11.4184,55.9740],
+  ZOOM_DEFAULT : 7
 };

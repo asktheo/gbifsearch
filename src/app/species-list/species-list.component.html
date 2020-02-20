@@ -1,21 +1,28 @@
-<ul>
-  <li *ngFor="let k of speciesListAsTree" (click)="selectKingdom(k.kingdomKey)">
-    {{k.kingdom}}
-    <ul *ngIf="kingdom && kingdom.kingdomKey === k.kingdomKey">
-      <li *ngFor="let c of kingdom.classes" (click)="selectClass(c.classKey)">
-        {{c.class}}
-        <ul *ngIf="speciesClass && speciesClass.classKey === c.classKey">
-          <li *ngFor="let o of speciesClass.orders" (click)="selectOrder(o.orderKey)">
-            {{o.order}}
-            <ul *ngIf="order && order.orderKey === o.orderKey">
-              <li *ngFor="let fam of order.families" (click)="selectFamily(fam.familyKey)">
-                {{fam.family}}
-                <ul *ngIf="family && family.familyKey === fam.familyKey">
-                  <li *ngFor="let gen of family.geni" (click)="selectGenus(gen.genusKey)">
-                    {{gen.genus}}
-                    <ul *ngIf="genus && genus.genusKey === gen.genusKey">
-                      <li *ngFor="let spec of genus.speciesList" (click)="selectSpecies(spec.taxonKey)">
-                        {{spec.scientificName}}
+<div  class="card">
+  <div class="card-header">
+    <h4 class="card-title text-center">{{title}}</h4>
+  </div>
+  <div class="card-body">
+    <ul id="speciestree" class="list-group">
+      <li *ngFor="let k of speciesListAsTree" (click)="selectKingdom(k.kingdomKey)" class="list-group-item">
+        <label class="badge taxonheader">{{k.kingdom}}</label>
+        <ul *ngIf="kingdom && kingdom.kingdomKey === k.kingdomKey" class="list-group">
+          <li *ngFor="let c of kingdom.classes" (click)="selectClass(c.classKey)" class="list-group-item">
+            <label class="badge taxonheader">{{c.class}}</label>
+            <ul *ngIf="speciesClass && speciesClass.classKey === c.classKey" class="list-group">
+              <li *ngFor="let o of speciesClass.orders" (click)="selectOrder(o.orderKey)" class="list-group-item">
+                <label class="badge taxonheader">{{o.order}}</label>
+                <ul *ngIf="order && order.orderKey === o.orderKey" class="list-group">
+                  <li *ngFor="let fam of order.families" (click)="selectFamily(fam.familyKey)" class="list-group-item">
+                    <label class="badge taxonheader">{{fam.family}}</label>
+                    <ul *ngIf="family && family.familyKey === fam.familyKey" class="list-group">
+                      <li *ngFor="let gen of family.geni" (click)="selectGenus(gen.genusKey)" class="list-group-item">
+                        <label class="badge taxonheader">{{gen.genus}}</label>
+                        <ul *ngIf="genus && genus.genusKey === gen.genusKey" class="list-group-flush">
+                          <li *ngFor="let spec of genus.speciesList" (click)="selectSpecies(spec)" class="d-flex justify-content-between">
+                            <label class="taxonspecies" [ngStyle]="{'color':selectedSpecies && spec.taxonKey === selectedSpecies.taxonKey? 'green' : '#000' }">{{spec.scientificName + ' (' + spec.dofbasenNameDa + ')'}}</label><label class="badge badge-primary badge-pill">{{spec.numberOfOccurrences}}</label>
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </li>
@@ -26,5 +33,5 @@
         </ul>
       </li>
     </ul>
-  </li>
-</ul>
+  </div>
+</div>

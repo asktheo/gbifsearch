@@ -1,9 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {SPECIESLIST} from './species_list';
-import { Observable } from 'rxjs';
-import { Kingdom, SpeciesClass, Order, Family, Genus, Species } from '../taxon/taxon';
-import { koLocale } from 'ngx-bootstrap';
-import { s } from '@angular/core/src/render3';
+import {SPECIES_IN_DOFBASEN} from './species_dofbasen';
+import { Kingdom, SpeciesClass, Order, Family, Genus, SpeciesInList } from '../taxon/taxon';
 
 
 @Component({
@@ -13,6 +11,7 @@ import { s } from '@angular/core/src/render3';
 })
 export class SpeciesListComponent implements OnInit {
   @Output() notifyParent: EventEmitter<any> = new EventEmitter();
+  title = "All recorded species"
 
   speciesListAsTree: Kingdom[]
   kingdom: Kingdom
@@ -20,6 +19,7 @@ export class SpeciesListComponent implements OnInit {
   order: Order
   family: Family
   genus: Genus
+  selectedSpecies: SpeciesInList = null;
 
   constructor() { 
 
@@ -50,8 +50,9 @@ export class SpeciesListComponent implements OnInit {
     this.genus = this.family.geni.find(ge => ge.genusKey == g);
   }
 
-  selectSpecies(key: number){
-    this.notifyParent.emit(key);
+  selectSpecies(spec: SpeciesInList){
+    this.selectedSpecies = spec;
+    this.notifyParent.emit(spec.taxonKey);
   }
 
 
@@ -113,7 +114,7 @@ export class SpeciesListComponent implements OnInit {
           }
           fam.geni.push(gen);
         }
-        const slimSpecies = {
+        const slimSpecies : SpeciesInList = {
           taxonKey: s.taxonKey,
           scientificName: s.scientificName,
           acceptedTaxonKey: s.acceptedTaxonKey,
@@ -122,6 +123,13 @@ export class SpeciesListComponent implements OnInit {
           taxonRank: s.taxonRank,
           taxonomicStatus : s.taxonomicStatus
         }
+        //try to map scientific name to DOFbasen equivalent
+        const nameParts=slimSpecies.scientificName.toLowerCase().split(' ');
+        const dofbasenSpecies = SPECIES_IN_DOFBASEN.filter(item => item.Type !== 'hybrid' && item.Type !== 'ubestemt').find(spec => {
+          const dofbasenNameParts = spec.Latin.toLowerCase().split(' ');
+          return (dofbasenNameParts[0] === nameParts[0] && dofbasenNameParts[1] === nameParts[1]);
+        });
+        slimSpecies.dofbasenNameDa = dofbasenSpecies? dofbasenSpecies.Artnavn : 'Artnavn ikke fundet';
         //finally put the species in the tree in the matching kingdom, class, family, genus
         gen.speciesList.push(slimSpecies);
       });

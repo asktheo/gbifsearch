@@ -1,26 +1,23 @@
-<form id="gbifform" class="form-inline" action="" style="width:100%">
-  <div class="input-group fullwidth">
-    <label class="form-control" for="dataset_key">Dataset key</label>
-    <input class="form-control" name="dataset_key" type="text" [(ngModel)]="searchOccurrence.dataset_key" placeholder="dataset_key"
-    />
-  </div>
-  <div class="input-group fullwidth">
-    <label class="form-control" for="taxon_key">Taxon key</label>
-    <input class="form-control" name="taxon_key" type="input" [(ngModel)]="searchOccurrence.taxon_key" placeholder="taxon_key"
-    />
-  </div>
-  <div class="input-group fullwidth">
-    <label class="form-control" for="recordedBy">Recorded by</label>
-    <input class="form-control" name="recordedBy" type="text" [(ngModel)]="searchOccurrence.recordedBy" placeholder="recordedBy"
-    />
-  </div>
-  <div class="input-group text-right">
-    <button class="btn btn-md btn-default" (click)="search()" ng-disabled="searching">Search</button>
-  </div>  
-</form>
-<div>
-
+<div class="card">
+    <div class="card-header">
+      <div class="card-title text-center">
+        <h4>{{title}}</h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <form id="gbifform" class="form-inline" action="">
+        <div class="input-group fullwidth">
+          <label class="form-control" for="recordedBy">Recorded by</label>
+          <input class="form-control" name="recordedBy" type="text" [(ngModel)]="searchOccurrence.recordedBy" placeholder="recordedBy"
+          />
+          <button class="btn btn-md btn-primary" (click)="search()" ng-disabled="searching">Search</button>
+        </div>
+      </form>
+    </div>
 </div>
+<div class="w-100 m-1"></div>
 <app-searchmap (wktEmitter)="setWkt($event)" [obsPosition]="obsPosition"></app-searchmap>
-<div>{{obsPosition}}</div>
+
+
+
 

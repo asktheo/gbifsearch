@@ -23,8 +23,8 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css", 
-              "./node_modules/bootstrap/dist/css/bootstrap-grid.min.css", 
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -63,7 +63,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
-            }            
+            }
           }
         },
         "serve": {
@@ -142,5 +142,8 @@
       }
     }
   },
-  "defaultProject": "gbifsearch"
+  "defaultProject": "gbifsearch",
+  "cli": {
+    "analytics": "6920306a-02b3-44a9-9985-14d4b7225989"
+  }
 }

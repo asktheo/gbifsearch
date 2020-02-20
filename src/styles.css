@@ -1,6 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    background-color: #006;
+    background-color: #aeaeae;
     font-size:12pt;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+#banner{
+    background-color: beige;
+}
+
+#header > h1 {
+    font-size: 2rem;
+}
+
+#about{
+    font-size: 10pt;
+}
+
+.taxonspecies{
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.taxonheader{
+    cursor: pointer;
+}
+
+#speciestree{
+    height: 530px;
+    overflow-y: scroll;
+}
+
+#speciestree > h3{
+    font-size: 14pt;
+}
+
+#speciestree > ul {
+    width:100%;
+    background-color: #ddd;
+}
+
+#speciestree > ul > li{
+    background-color: #ddd;
 }

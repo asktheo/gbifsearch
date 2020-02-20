@@ -22,6 +22,11 @@ export interface Species {
     speciesKey?: number
 }
 
+export interface SpeciesInList extends Species {
+    selected?: boolean
+    dofbasenNameDa?: string
+}
+
 export interface Kingdom {
     kingdom: string,
     kingdomKey: number,
@@ -50,4 +55,14 @@ export interface Genus {
     genus: string,
     genusKey: number
     speciesList: Species[]
+}
+
+export interface DOFbasenSpecies {
+    Euring: string,
+    Sortering: number,
+    Artnavn: string,
+    Latin: string,
+    English: string,
+    Status: string,
+    Type: string
 }

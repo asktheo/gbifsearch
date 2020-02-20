@@ -1,18 +1,33 @@
-<div class="container">
-  <div class="row text-center">
-    <div class="col">
-      <div id="title" class="lead"><label>{{title}}</label></div>
+<div class="container-fluid">
+  <div class="row m-1" id="banner">
+    <div class="col-6 text-center">
+      <div id="header">
+        <h1>{{title}}</h1>
+      </div>
     </div>
+    <div class="col-5">
+      <div id="about">Sources: <a href="https://dofbasen.dk" target="blank">DOFbasen</a> and
+        <a href="https://gbif.org" target="blank">GBIF.org</a>.<br> Download specification: <a
+          href="https://doi.org/10.15468/dl.vvdkjf">GBIF Occurrence Download</a>.<br> Species list downloaded as csv
+        file 15 February 2020 and converted to json tree
+      </div>
+    </div>
+    <app-help></app-help>
   </div>
-  <div class="row">
+  <div class="row" id="content">
     <div class="col">
       <app-species-list (notifyParent)="setTaxonKey($event)"></app-species-list>
     </div>
     <div class="col">
-      <app-searchform (notifyParent)="search($event)" [searching]="searching" [obsPosition]="obsPosition" [speciesKey]="taxonKey"></app-searchform>
+      <app-searchform (notifyParent)="search($event)" [searching]="searching" [obsPosition]="obsPosition"
+        [speciesKey]="taxonKey" [datasetKey]="datasetKey"></app-searchform>
     </div>
-    <div class="col">
-      <app-occurence-result (notifyParent)="endSearch($event)" (emitPosition)="setPosition($event)" [searching]="searching"></app-occurence-result>
+  </div>
+  <div class="row">
+    <div class="w-100 m-1"></div>
+    <div class="col flex">
+      <app-occurence-result (notifyParent)="endSearch($event)" (emitPosition)="setPosition($event)"
+        [searching]="searching"></app-occurence-result>
     </div>
   </div>
 </div>

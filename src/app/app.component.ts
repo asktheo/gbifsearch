@@ -6,7 +6,8 @@ import { Component, Output } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Search a GBIF dataset';
+  datasetKey = "95db4db8-f762-11e1-a439-00145eb45e9a";
+  title = 'Search DOFbasen data in GBIF';
   searching : boolean = false;
   obsPosition : String = "";
   taxonKey : number;

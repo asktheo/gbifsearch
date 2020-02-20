@@ -1,22 +1,25 @@
-<div class="row" *ngIf="occurrences">
-    <alert type="warning" *ngIf="occurrences.length == 0">0 observations found!</alert>
-    <alert type="success" *ngIf="occurrences.length &gt; 0">{{occurrences.length}} observations found!</alert>
-    <table id="occurenceresult" class="table" style="width:100%" *ngIf="occurrences.length &gt; 0">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Locality</th>
-                <th>Name</th>
-                <th>Count</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let occurence of occurrences" >
-                <td>{{occurence.eventDate | date }}</td>
-                <td class="highLight" (click)="setPosition(occurence)">{{occurence.locality }}</td>
-                <td>{{occurence.vernacularName }}</td>
-                <td>{{occurence.individualCount}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="card" *ngIf="occurrences">
+    <div class="card-body">
+        <table id="occurenceresult" class="table">
+            <caption *ngIf="occurrences.length === 1">{{occurrences.length}} occurence found!</caption>
+            <caption *ngIf="occurrences.length > 1">{{occurrences.length}} occurences found!</caption>
+            <caption *ngIf="occurrences.length == 0">0 occurences found!</caption>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Locality</th>
+                    <th>Name</th>
+                    <th>Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let occurence of occurrences">
+                    <td>{{occurence.eventDate | date }}</td>
+                    <td class="highLight" (click)="setPosition(occurence)">{{occurence.locality }}</td>
+                    <td>{{occurence.vernacularName }}</td>
+                    <td>{{occurence.individualCount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

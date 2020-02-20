@@ -30,6 +30,7 @@ import { coordinate } from 'openlayers';
 export class SearchmapComponent implements OnInit, OnChanges {
   @Output() wktEmitter: EventEmitter<string> = new EventEmitter();
   @Input() obsPosition: String;
+  private title = "Limit search in map";
   private _obsPosition: String;
   private map: Map;
   private layers: any;
@@ -135,8 +136,6 @@ export class SearchmapComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const obs: SimpleChange = changes.obsPosition;
-    console.log('prev value: ', obs.previousValue);
-    console.log('got value: ', obs.currentValue);
     if (obs.currentValue) {
       this.obsPosition = obs.currentValue.toUpperCase();
 

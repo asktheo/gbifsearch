@@ -9,12 +9,13 @@ const httpOptions = {
 
 @Injectable()
 export class OccurenceService {
+  private limit = 300;
   private baseUrl : string;
   private searchParams : HttpParams;
 
   constructor(private http : HttpClient) { 
     this.baseUrl = '//api.gbif.org/v1/occurrence';
-    this.searchParams = new HttpParams();
+    this.searchParams = new HttpParams().set('limit',this.limit.toString());
   }
 
   search() : Observable<OccurenceResult> {
